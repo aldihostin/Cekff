@@ -9,13 +9,13 @@ document.addEventListener('DOMContentLoaded', function() {
         loadingSpinner.style.display = 'block';
         fetch(`https://api.isan.eu.org/nickname/ff?id=${encodeURIComponent(ffUrlInput.value)}`)
             .then(response => response.json())
-            .then(json => {  // Changed from `response => response.json()` to `json =>`
+            .then(json => {
                 loadingSpinner.style.display = 'none';
-                if (json.success) {  // Changed from `response.success` to `json.success`
+                if (json.success) {
                     const game = json.game;
                     const id = json.id;
                     const name = json.name;
-                
+
                     ffContent.innerHTML = `
                         <h2>Mendapatkan nama game</h2>
                         <p>game: ${game} | id: ${id} | name: ${name}</p>
