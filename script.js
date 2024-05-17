@@ -8,21 +8,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
         loadingSpinner.style.display = 'block';
         fetch(`https://api.isan.eu.org/nickname/ff?id=${encodeURIComponent(ffUrlInput.value)}`)
-        
-            .then(response => response.json()) => {
+            .then(response => response.json())
+            .then(json => {  // Changed from `response => response.json()` to `json =>`
                 loadingSpinner.style.display = 'none';
-                if (response.success) {
-                const game = json.game;
-                const id = json.id;
-                const name = json.name;
+                if (json.success) {  // Changed from `response.success` to `json.success`
+                    const game = json.game;
+                    const id = json.id;
+                    const name = json.name;
                 
                     ffContent.innerHTML = `
                         <h2>Mendapatkan nama game</h2>
-                        <p>game : ${game} | id : ${id} | name : ${name}</p>
-                        
-               `;
+                        <p>game: ${game} | id: ${id} | name: ${name}</p>
+                    `;
                 } else {
-                    ffContent.innerHTML = `<p>nickname tidak ditemukan</p>`;
+                    ffContent.innerHTML = `<p>Nickname tidak ditemukan</p>`;
                 }
             })
             .catch(error => {
