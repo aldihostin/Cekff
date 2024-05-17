@@ -57,7 +57,7 @@ button:hover {
     100% { transform: rotate(360deg); }
 }
 
-#ff-content {
+#tiktok-content {
     margin-top: 20px;
 }
 
@@ -65,4 +65,20 @@ img {
     width: 100%;
     height: auto;
     margin-bottom: 10px;
+}
+
+/* Tambahkan aturan CSS berikut untuk mengatur ukuran video */
+video {
+    width: 100%;
+    height: auto;
+    max-width: 100%; /* Video akan menyesuaikan lebar maksimal container */
+}
+
+/* Tambahkan aturan CSS untuk mengatur ukuran video saat tampilan layar kecil */
+@media (max-width: 768px) {
+    video {
+        width: calc(100vw - 40px); /* Lebar video akan menyesuaikan lebar layar dikurangi margin */
+        height: auto;
+        max-width: none; /* Video akan menyesuaikan lebar layar */
+    }
 }
